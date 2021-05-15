@@ -1,5 +1,5 @@
 <% if @book.errors.any? %>
-  <%= @book.errors.count %>件のエラーが発生しました
+  <%= @book.errors.count %>error
   <% @book.errors.full_messages.each do |message| %>
     <%= message %>
   <% end %>
@@ -22,9 +22,10 @@
 			<td><%= book.title %></td>
 			<td><%= book.body %></td>
 
-			<td><%= link_to "Edit", edit_book_path(book) %></td>
+
 			<td><%= link_to "Show", book_path(book) %></td>
-			<td><%= link_to "Destroy", book_path(@book),method: :delete %></td>
+			<td><%= link_to "Edit", edit_book_path(book) %></td>
+			<td><%= link_to "Destroy", book_path(book),method: :delete, data: {confirm: "Are you sure?"} %></td>
 		</tr>
 		<% end %>
 	</tbody>
